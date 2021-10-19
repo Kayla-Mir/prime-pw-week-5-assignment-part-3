@@ -21,10 +21,11 @@ console.log('Adding a new album:', addToCollection('Feel Special', 'TWICE', '201
 
 console.log('My collection:', collection);
 
-function showCollection(array) {
-  console.log(array.length);
-  for (i = 0; i < array.length; i++) {
-    console.log(`${array[i].title} by ${array[i].artist}, published in ${array[i].yearPublished}.`);
+function showCollection(myArray) {
+  console.log(myArray.length);
+  for (i = 0; i < myArray.length; i++) {
+    console.log(`${myArray[i].title} by ${myArray[i].artist}, published in
+      ${myArray[i].yearPublished}.`);
   }
 }
 showCollection(collection);
@@ -41,3 +42,26 @@ function findByArtist(artist) {
 
 console.log('Do I have TWICE?:', findByArtist('TWICE'));
 console.log('Do I have Purple Kiss?:', findByArtist('Purple Kiss'));
+
+function search(searchObject) {
+  let allMatchingItems = [];
+  for (i = 0; i < collection.length; i++) {
+    if (!searchObject || Object.keys(searchObject).length === 0) {
+      return collection;
+    } else if (collection[i].artist === searchObject.artist &&
+      collection[i].yearPublished === searchObject.yearPublished) {
+      allMatchingItems.push(collection[i]);
+    }
+  }
+  return allMatchingItems;
+}
+
+console.log('Searching for TWICE in 2019:', search(
+  {artist: 'TWICE', yearPublished: '2019'}
+));
+
+console.log('Should return an empty array:', search(
+  {artist: 'no', yearPublished: 'yes'}
+));
+
+console.log('Should return the full collection:', search({}));
