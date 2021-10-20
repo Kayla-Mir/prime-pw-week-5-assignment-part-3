@@ -145,7 +145,7 @@ console.log('My collection:', collection);
 function showCollection(myArray) {
   for (i = 0; i < myArray.length; i++) {
     console.log(`${myArray[i].title} by ${myArray[i].artist} published in`
-      + `${myArray[i].yearPublished}:`)
+      + `${myArray[i].yearPublished}:`);
     for (let track of collection[i].tracks) {
       console.log(`${collection[i].tracks.indexOf(track) + 1}: ${track.name}:`
       + `${track.duration}`);
@@ -153,6 +153,7 @@ function showCollection(myArray) {
   }
 }
 
+console.log('-----My Collection listed-----');
 showCollection(collection);
 
 function findByArtist(artist) {
@@ -164,7 +165,7 @@ function findByArtist(artist) {
   }
   return isThisYourArtist;
 }
-
+console.log('-----Searching by Artist-----');
 console.log('Do I have TWICE?:', findByArtist('TWICE'));
 console.log('Do I have Purple Kiss?:', findByArtist('Purple Kiss'));
 
@@ -192,6 +193,7 @@ function search(searchObject) {
   }
   return allMatchingItems;
 }
+console.log('-----Searching by Artist and Year-----');
 
 console.log('Searching for TWICE in 2019:', search(
   {artist: 'TWICE', yearPublished: '2019'}
@@ -202,6 +204,8 @@ console.log('Should return an empty array:', search(
 ));
 
 console.log('Should return the full collection:', search({}));
+
+console.log('-----Searching by track name-----');
 
 console.log('Searching for song:', search({trackName: 'Paranoid'}));
 
