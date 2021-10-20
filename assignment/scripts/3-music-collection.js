@@ -27,6 +27,14 @@ console.log('Adding a new album:', addToCollection(
       duration: '4:08'
     },
     {
+      name: '4x4ever',
+      duration: '3:04'
+    },
+    {
+      name: 'Better',
+      duration: '3:16'
+    },
+    {
       name: 'HIP',
       duration: '3:15'
     }
@@ -122,6 +130,10 @@ console.log('Adding a new album:', addToCollection(
       duration: '3:06'
     },
     {
+      name: 'TRICK IT',
+      duration: '3:14'
+    },
+    {
       name: '21:29',
       duration: '3:48'
     }
@@ -132,12 +144,15 @@ console.log('My collection:', collection);
 
 function showCollection(myArray) {
   for (i = 0; i < myArray.length; i++) {
-    console.log(`${myArray[i].title} by ${myArray[i].artist} published in ${myArray[i].yearPublished}:
-      1. ${myArray[i].tracks[0].name}: ${myArray[i].tracks[0].duration}
-      2. ${myArray[i].tracks[1].name}: ${myArray[i].tracks[1].duration}
-      3. ${myArray[i].tracks[2].name}: ${myArray[i].tracks[2].duration}`);
+    console.log(`${myArray[i].title} by ${myArray[i].artist} published in`
+      + `${myArray[i].yearPublished}:`)
+    for (let track of collection[i].tracks) {
+      console.log(`${collection[i].tracks.indexOf(track) + 1}: ${track.name}:`
+      + `${track.duration}`);
+    }
   }
 }
+
 showCollection(collection);
 
 function findByArtist(artist) {
@@ -165,7 +180,8 @@ function search(searchObject) {
       for (let track of collection[i].tracks) {
         if (track.name === searchObject.trackName) {
           allMatchingItems.push(collection[i]);
-          console.log(`Found ${searchObject.trackName} in the album ${collection[i].title}.`);
+          console.log(`Found ${searchObject.trackName} in the album`
+            + ` ${collection[i].title}.`);
           return allMatchingItems;
         }
       }
