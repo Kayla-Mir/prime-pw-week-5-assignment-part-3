@@ -148,7 +148,7 @@ function showCollection(myArray) {
       + `${myArray[i].yearPublished}:`);
     for (let track of collection[i].tracks) {
       console.log(`${collection[i].tracks.indexOf(track) + 1}: ${track.name}:`
-      + `${track.duration}`);
+      + ` ${track.duration}`);
     }
   }
 }
