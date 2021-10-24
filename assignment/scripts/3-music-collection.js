@@ -144,7 +144,7 @@ console.log('My collection:', collection);
 
 function showCollection(myArray) {
   for (i = 0; i < myArray.length; i++) {
-    console.log(`${myArray[i].title} by ${myArray[i].artist} published in`
+    console.log(`${myArray[i].title} by ${myArray[i].artist} published in `
       + `${myArray[i].yearPublished}:`);
     for (let track of collection[i].tracks) {
       console.log(`${collection[i].tracks.indexOf(track) + 1}: ${track.name}:`
